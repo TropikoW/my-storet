@@ -1,0 +1,87 @@
+<!-- <h1>Hola mundo</h1>
+<h2>{{'hola mundo'.repeat(5)}}</h2>
+<p>3+3 = {{3*3}}</p>
+<p>Hola soy {{name}},y tengo {{age}}</p>
+<img width={{person.widthImage}} src={{img}} alt="img">
+<hr/>
+<button [disabled]="btnDisabled">Enviar</button>
+<hr>
+<input type="text" [value]='name'>
+<hr>
+<progress max="100" [value]="age"></progress>
+<hr>
+<img width={{person.widthImage}} [src]="img" alt="">
+<hr>
+<p>hola soy {{person.name}} {{person.lastname}},y tengo {{person.age}} </p>
+<hr>
+<button (click)="tooglebtn()">Btn</button>
+<hr>
+<button (click)="toogleage()">subir edad</button>
+<p>{{person.age}}</p> -->
+
+<!-- <h1>Presentación</h1>
+<p>Hola mi nombre es : {{person.name}} {{person.lastname}},tengo {{person.age}}.</p>
+<button [disabled]="btnDisabled" (click)="toogleage()">subir edad</button>
+<button (click)="tooglebtn()">desactivar boton</button>
+<div class="box" (scroll)="divScroll($event)">
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis id enim aliquam neque asperiores molestiae laborum ratione dignissimos, corrupti nemo mollitia! Fugiat perferendis unde exercitationem aperiam! Molestiae tempore quibusdam eos!</p>
+</div>
+<div class="box">
+<button (click)="toogleage()">subir edad</button>
+  <p>{{person.name}}</p>
+  <input type="tex" [value]="person.name" (keyup)="changeName($event)">
+</div> -->
+<h1>{{document.title}}</h1>
+<input (keyup)="changeTitle($event)" placeholder="Ponle titulo">
+<p>{{document.dParagraph}}</p>
+<input (keyup)="WritingParagraph($event)" placeholder="Escribe acá">
+<hr>
+<p>Acá abajo irá el NGMODEL</p>
+<input [(ngModel)]="document.title" required #fillInput="ngModel" [(ngModel)]="document.dParagraph">
+<p>¿Tiene contenido el input? = {{fillInput.valid}}</p>
+<input type="number" max="100" min="50" required #ageInput="ngModel" [(ngModel)]="document.age">
+<p>¿Valido? : {{ageInput.valid}}</p>
+<hr>
+<h1>ngIf</h1>
+<input type="text" [(ngModel)]="document.title">
+<p *ngIf="document.title === 'Jovanny';else showBlock">Soy Jovanny</p>
+<ng-template #showBlock>
+  <p>Bloque template</p>
+</ng-template>
+<hr>
+<ul>
+  <li *ngFor="let names of document.name; index as i">
+    {{i}} {{names}}
+    <button (click)="deleteName(i)">Eliminar</button>
+  </li>
+  <li *ngIf="document.name.length === 0">Se quedo vacio esta vaina</li>
+</ul>
+<hr>
+<input type="text" placeholder="agrega nombre a la lista" [(ngModel)]="newName">
+<button (click)="addName()" >Agregar</button>
+<hr>
+<!-- <p>Mostrando productos</p>
+<img *ngFor="let images of products.image" alt=""> -->
+<div>
+  <div *ngFor="let images of products">
+    <img width="100px" [src]="images.image" alt="image">
+    <p>{{images.price}}</p>
+    <p>{{images.name}}</p>
+  </div>
+</div>
+<hr>
+<div [ngSwitch]="person.name">
+  <input type="text" [(ngModel)]="person.name">
+  <p *ngSwitchCase="'Jovanny'">
+    Jovanny hola
+  </p>
+  <p *ngSwitchCase="'Roberto'">
+    ROberto hola
+  </p>
+  <p *ngSwitchDefault> NInguno pues</p>
+</div>
+<div>
+  <p>Validacion</p>
+  <input type="text" required #inputTest="ngModel" [(ngModel)]="person.name">
+  <p class="message__error" [class.invalid]="inputTest.invalid">El campo es requerido</p>
+</div>
